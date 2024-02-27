@@ -9,4 +9,4 @@ function KV_DELETE_FORCE()  {
   fi
   csvq -k -N -a -f "FIXED" -r "${KV_REPOSITORY_DIR}" "DELETE FROM KEYVALUE WHERE KEY = '$1'"
 }
-KV_DELETE_FORCE
+KV_DELETE_FORCE $@

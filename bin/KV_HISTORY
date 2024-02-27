@@ -16,4 +16,4 @@ function KV_HISTORY()  {
     return 0
   fi
 }
-KV_HISTORY
+KV_HISTORY $@

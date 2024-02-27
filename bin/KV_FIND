@@ -17,4 +17,4 @@ function KV_FIND()  {
     return 0
   fi
 }
-KV_FIND
+KV_FIND $@

@@ -9,4 +9,4 @@ function KV_EXISTS()  {
     return 0
   fi
 }
-KV_EXISTS
+KV_EXISTS $@
