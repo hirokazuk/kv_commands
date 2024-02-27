@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # code: language=bash
 
-KV_INIT
+source KV_INIT
 function KV_EXISTS()  {
   if [ -z $(KV_FIND "$1") ]; then
     return 1

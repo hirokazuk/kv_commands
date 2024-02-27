@@ -2,7 +2,7 @@
 # code: language=bash
 
 
-KV_INIT
+source KV_INIT
 function KV_ALL()  {
   csvq -k -r "${KV_REPOSITORY_DIR}" "SELECT key,value,TIMESTAMP FROM KEYVALUE"
 }

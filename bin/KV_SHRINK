@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # code: language=bash
 
-KV_INIT
+source KV_INIT
 function KV_SHRINK()  {
   KV_SORT
   csvq -Q  -f CSV -k -r "${KV_REPOSITORY_DIR}" "select KEY,VALUE,TIMESTAMP from (select KEY,VALUE,LAG(VALUE) over (partition by KEY order by TIMESTAMP) as VALUE_PREV,TIMESTAMP from KEYVALUE) WHERE IF(VALUE= VALUE_PREV, 1, 0) = 0  order by KEY,TIMESTAMP" | sponge  ${KV_REPOSITORY_DIR}/KEYVALUE.csv

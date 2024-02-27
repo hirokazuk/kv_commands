@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # code: language=bash
 
-KV_INIT
+source KV_INIT
 function KV_DELETE()  {
   if [ -z "$1" ]; then
     echo "no args" >&2
