@@ -9,4 +9,3 @@ if [ ! -f "${KV_REPOSITORY_DIR}/KEYVALUE.csv" ]; then
     # touch "${KV_REPOSITORY_DIR}/KEYVALUE.csv"
     csvq -r "$KV_REPOSITORY_DIR" 'CREATE TABLE `KEYVALUE.csv` (KEY,VALUE,TIMESTAMP)'
 fi
-echo called $0
