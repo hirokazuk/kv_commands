@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# code: language=bash
+
+KV_INIT
+function KV_SORT()  {
+  csvq -Q -f CSV -k -r "${KV_REPOSITORY_DIR}" "SELECT * FROM KEYVALUE ORDER BY key,TIMESTAMP" | sponge  ${KV_REPOSITORY_DIR}/KEYVALUE.csv
+}
+KV_SORT

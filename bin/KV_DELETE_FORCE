@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# code: language=bash
+
+KV_INIT
+function KV_DELETE_FORCE()  {
+  if [ -z "$1" ]; then
+    echo "no args" >&2
+    return 1
+  fi
+  csvq -k -N -a -f "FIXED" -r "${KV_REPOSITORY_DIR}" "DELETE FROM KEYVALUE WHERE KEY = '$1'"
+}
+KV_DELETE_FORCE

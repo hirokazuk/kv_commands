@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# code: language=bash
+
+
+KV_INIT
+function KV_CLEAR()  {
+  csvq -k -r "${KV_REPOSITORY_DIR}" "INSERT INTO KEYVALUE select KEY,'' AS VALUE,DATETIME_FORMAT(NOW(),'%Y-%m-%dT%T') AS TIMESTAMP from ( select DISTINCT KEY from KEYVALUE)"
+  # csvq -k -N -a -f "FIXED" -r "${KV_REPOSITORY_DIR}" "DELETE FROM KEYVALUE"
+  # csvq -k -N -a -f "FIXED" -r "${KV_REPOSITORY_DIR}" "INSERT INTO KEYVALUE (KEY,VALUE,TIMESTAMP) VALUES ('TESTKEY','TESTVALUE',,DATETIME_FORMAT(NOW(),'%Y-%m-%dT%T'))"
+}
+KV_CLEAR

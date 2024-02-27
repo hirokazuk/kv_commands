@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# code: language=bash
+
+export KV_REPOSITORY_DIR=~/kvsystem
+mkdir -p ${KV_REPOSITORY_DIR}
+
+if [ ! -f "${KV_REPOSITORY_DIR}/KEYVALUE.csv" ]; then
+    echo "${KV_REPOSITORY_DIR}/KEYVALUE.csv"  is not exists. create file
+    # touch "${KV_REPOSITORY_DIR}/KEYVALUE.csv"
+    csvq -r "$KV_REPOSITORY_DIR" 'CREATE TABLE `KEYVALUE.csv` (KEY,VALUE,TIMESTAMP)'
+fi
+echo called $0

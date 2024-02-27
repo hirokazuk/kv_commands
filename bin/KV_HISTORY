@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# code: language=bash
+
+KV_INIT
+function KV_HISTORY()  {
+  if [ -z "$1" ]; then
+    echo "no args" >&2
+    return 1
+  fi
+  RESULT=$(csvq -k -r "${KV_REPOSITORY_DIR}" "SELECT VALUE,TIMESTAMP AS \"TIMESTAMP▽\" FROM KEYVALUE WHERE KEY = '$1' ORDER BY TIMESTAMP DESC")
+  echo "${RESULT}"
+  if [ -z "${RESULT}" ]; then
+    echo "not found" >&2
+    return 1
+  else
+    return 0
+  fi
+}
+KV_HISTORY

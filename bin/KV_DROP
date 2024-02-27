@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# code: language=bash
+
+KV_INIT
+function KV_DROP()  {
+  csvq -k -N -a -f "FIXED" -r "${KV_REPOSITORY_DIR}" "DELETE FROM KEYVALUE"
+  #  csvq -k -N -a -f "FIXED" -r "${KV_REPOSITORY_DIR}" "INSERT INTO KEYVALUE (KEY,VALUE,TIMESTAMP) VALUES ('TESTKEY','TESTVALUE',,DATETIME_FORMAT(NOW(),'%Y-%m-%dT%T'))"
+  csvq -r "$KV_REPOSITORY_DIR" 'CREATE TABLE `KEYVALUE.csv` (KEY,VALUE,TIMESTAMP)'
+}
+KV_DROP

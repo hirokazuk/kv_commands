@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# code: language=bash
+
+KV_INIT
+function KV_MERGE()  {
+  if [ -z "$1" -o -z "$2" ]; then
+    echo "no args" >&2
+    return 1
+  fi
+  csvq -k -r "${KV_REPOSITORY_DIR}" "REPLACE INTO KEYVALUE (KEY,VALUE,TIMESTAMP)  USING (KEY) VALUES ('$1','$2',DATETIME_FORMAT(NOW(),'%Y-%m-%dT%T'))"
+}
+KV_MERGE

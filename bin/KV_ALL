@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# code: language=bash
+
+
+KV_INIT
+function KV_ALL()  {
+  csvq -k -r "${KV_REPOSITORY_DIR}" "SELECT key,value,TIMESTAMP FROM KEYVALUE"
+}
+KV_ALL

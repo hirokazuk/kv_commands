@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# code: language=bash
+
+
+KV_INIT
+cp ${KV_REPOSITORY_DIR}/KEYVALUE.csv ${KV_REPOSITORY_DIR}/KEYVALUE_$(date "+%Y%m%d_%H%M%S").csv

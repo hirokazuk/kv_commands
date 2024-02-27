@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# code: language=bash
+
+KV_INIT
+function KV_FIND()  {
+  if [ -z "$1" ]; then
+    echo "no args" >&2
+    return 1
+  fi
+  #RESULT=$(csvq -k -N -a -f "FIXED" -r "${KV_REPOSITORY_DIR}" "SELECT VALUE FROM KEYVALUE WHERE KEY = '$1' ORDER BY TIMESTAMP DESC LIMIT 1")
+  RESULT=$(csvq -k -N -a -f "FIXED" -r "${KV_REPOSITORY_DIR}" "select * from (SELECT VALUE FROM KEYVALUE WHERE KEY = '$1' ORDER BY TIMESTAMP DESC LIMIT 1) WHERE VALUE <> ''")
+  if [ -z "${RESULT}" ]; then
+    #echo "not found" >&2
+    return 1
+  else
+    echo ${RESULT}
+    return 0
+  fi
+}
+KV_FIND
